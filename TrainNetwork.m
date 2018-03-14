@@ -1,4 +1,4 @@
-function [new_weights] = Network(Input, Targets, Weights, nit)
+function [new_weights] = TrainNetwork(Input, Targets, Weights, nit)
 % targets = arrays of vectors of each hidden layer, given the number of layers and 
 %           number of neuron in each layer by weights.
 % nit = given number in [0.01, 0.1]
