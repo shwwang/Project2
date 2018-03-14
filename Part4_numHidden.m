@@ -1,19 +1,32 @@
 % Part 4
 
-function [Output] = numHidden(Input,weights)
+function [O] = MultiNet(Input,weights)
 
 % Input is a vector
 % weights are a array
 
-Output = Input;
-% Get the input as a vector
+inp = double(Input);
+% Get the initial input
 
 for i = 1:length(weights)
     
-    NET = Output * weights{i};
+    [~,b] = size(weights{i});
     
-    Output = 1/(1+exp(-NET));
-    Output = transpose(Output);
+    W = weights{i};
     
+    Net = inp * W;
+    %the size of net is 1*b
+    
+    O = zeros(1,b);
+    
+    for j = 1:b
+        O(j) = 1/(1+exp(-Net(j)));
+        %size of output is 1*b
+    end
+    
+    inp = O;
+    %output in step i is the input in step i+1
+    
+end
     
 end
